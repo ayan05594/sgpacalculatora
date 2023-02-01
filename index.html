@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SGPA Calculator</title>
+  </head>
+  <body>
+    <h1>SGPA Calculator</h1>
+    <form>
+      <div>
+        <label>Enter the grade for DE&LA: </label>
+        <input type="text" id="grade1">
+      </div>
+      <div>
+        <label>Enter the credits for DE&LA: </label>
+        <input type="number" id="credits1">
+      </div>
+      <div>
+        <label>Enter the grade for CHEM: </label>
+        <input type="text" id="grade2">
+      </div>
+      <div>
+        <label>Enter the credits for CHEM: </label>
+        <input type="number" id="credits2">
+      </div>
+      <div>
+        <label>Enter the grade for BETC: </label>
+        <input type="text" id="grade3">
+      </div>
+      <div>
+        <label>Enter the credits for BETC: </label>
+        <input type="number" id="credits3">
+      </div>
+<div>
+        <label>Enter the grade for ENGLISH: </label>
+        <input type="text" id="grade4">
+      </div>
+      <div>
+        <label>Enter the credits for ENGLISH </label>
+        <input type="number" id="credits4">
+      </div>
+<div>
+        <label>Enter the grade for ELECTIVE-I: </label>
+        <input type="text" id="grade5">
+      </div>
+      <div>
+        <label>Enter the credits for ELECTIVE-I: </label>
+        <input type="number" id="credits5">
+      </div>
+<div>
+        <label>Enter the grade for ELECTIVE-II: </label>
+        <input type="text" id="grade6">
+      </div>
+      <div>
+        <label>Enter the credits for ELECTIVE-II: </label>
+        <input type="number" id="credits6">
+      </div>
+<div>
+        <label>Enter the grade for YOGA: </label>
+        <input type="text" id="grade7">
+      </div>
+      <div>
+        <label>Enter the credits for YOGA: </label>
+        <input type="number" id="credits7">
+      </div>
+<div>
+        <label>Enter the grade for COMM.LAB: </label>
+        <input type="text" id="grade8">
+      </div>
+      <div>
+        <label>Enter the credits for COMM.LAB: </label>
+        <input type="number" id="credits8">
+      </div>
+<div>
+        <label>Enter the grade for ENGG.LAB: </label>
+        <input type="text" id="grade9">
+      </div>
+      <div>
+        <label>Enter the credits for ENGG.LAB: </label>
+        <input type="number" id="credits9">
+      </div>
+<div>
+        <label>Enter the grade for WORKSHOP: </label>
+        <input type="text" id="grade10">
+      </div>
+      <div>
+        <label>Enter the credits for WORKSHOP: </label>
+        <input type="number" id="credits10">
+      </div>
+<div>
+        <label>Enter the grade for CHEM.LAB: </label>
+        <input type="text" id="grade11">
+      </div>
+      <div>
+        <label>Enter the credits for CHEM.LAB: </label>
+        <input type="number" id="credits11">
+      </div>
+
+      <div>
+        <button type="button" onclick="calculateSGPA()">Calculate SGPA</button>
+      </div>
+      <div>
+        <p id="result">SGPA: </p>
+      </div>
+    </form>
+    <script>
+      function calculateSGPA() {
+       
+        let grade1 = document.getElementById("grade1").value;
+        let credits1 = parseInt(document.getElementById("credits1").value);
+        let grade2 = document.getElementById("grade2").value;
+        let credits2 = parseInt(document.getElementById("credits2").value);
+	let grade3 = document.getElementById("grade3").value;
+        let credits3 = parseInt(document.getElementById("credits3").value);
+	let grade4 = document.getElementById("grade4").value;
+        let credits4 = parseInt(document.getElementById("credits4").value);
+	let grade5 = document.getElementById("grade5").value;
+        let credits5 = parseInt(document.getElementById("credits5").value);
+	let grade6 = document.getElementById("grade6").value;
+        let credits6 = parseInt(document.getElementById("credits6").value);
+	let grade7 = document.getElementById("grade7").value;
+        let credits7 = parseInt(document.getElementById("credits7").value);
+	let grade8 = document.getElementById("grade8").value;
+        let credits8 = parseInt(document.getElementById("credits8").value);
+	let grade9 = document.getElementById("grade9").value;
+        let credits9 = parseInt(document.getElementById("credits9").value);
+	let grade10 = document.getElementById("grade10").value;
+        let credits10 = parseInt(document.getElementById("credits10").value);
+	let grade11 = document.getElementById("grade11").value;
+        let credits11 = parseInt(document.getElementById("credits11").value);
+        
+
+        // Calculate the SGPA
+        let TotGradePt = 0.0;
+        let totalCredits = 0;
+
+        let courses = [
+          { grade: grade1, credits: credits1 },
+          { grade: grade2, credits: credits2 },
+          { grade: grade3, credits: credits3 },
+		{ grade: grade4, credits: credits4 },
+		{ grade: grade5, credits: credits5 },
+		{ grade: grade6, credits: credits6 },
+		{ grade: grade7, credits: credits7 },
+		{ grade: grade8, credits: credits8 },
+		{ grade: grade9, credits: credits9 },
+		{ grade: grade10, credits: credits10},
+		{ grade: grade11, credits: credits11 },
+
+        ];
+
+        for (let i = 0; i < courses.length; i++) {
+          let grade = courses[i].grade;
+          let credits = courses[i].credits;
+
+          let gradePoint = 0.0;
+          switch (grade) {
+            case 'O':
+              gradePoint = 10.0;
+              break;
+            case 'E':
+              gradePoint = 9.0;
+              break;
+            case 'A':
+              gradePoint = 8.0;
+              break;
+            case 'B':
+              gradePoint = 7.0;
+              break;
+            case 'C':
+              gradePoint = 6.0;
+              break;
+            case 'D':
+              gradePoint = 5.0;
+              break;
+            default:
+              alert("Invalid grade, try again.");
+              i--;
+              continue;
+          }
+
+          TotGradePt = TotGradePt + (gradePoint * credits);
+          totalCredits = totalCredits + credits;
+        }
+
+        let sgpa = TotGradePt / totalCredits;
+        document.getElementById("result").innerHTML = "SGPA: " + sgpa;
+      }
+    </script>
+  </body>
